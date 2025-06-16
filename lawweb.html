@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legacy Legal Services</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+            scroll-behavior: smooth; 
+            overflow-x: hidden; 
+        }
+
+        
+        .hero-section {
+            background-image: url('https://images.pexels.com/photos/5668481/pexels-photo-5668481.jpeg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .hero-overlay {
+            background-color: rgba(0, 0, 0, 0.7); 
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+
+        .tradition-image-container {
+            position: relative;
+            padding-top: 75%; 
+            overflow: hidden;
+            border-radius: 0.75rem; 
+        }
+        .tradition-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        
+        .team-member-image-container {
+            position: relative;
+            padding-top: 100%; 
+            overflow: hidden;
+            border-radius: 0.75rem; 
+        }
+        .team-member-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out; 
+        }
+        .team-member-image-container:hover img {
+            transform: scale(1.05); 
+        }
+
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+        }
+        .animate-slide-in-left {
+            animation: slideInLeft 1s ease-out forwards;
+        }
+        .animate-slide-in-right {
+            animation: slideInRight 1s ease-out forwards;
+        }
+
+       
+        .animated-element {
+            opacity: 0;
+            transform: translateY(20px); 
+            transition: transform 0.6s ease-out, opacity 0.6s ease-out; 
+            will-change: transform, opacity; 
+        }
+        .animated-element.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        
+        .animated-element:nth-child(1) { transition-delay: 0s; }
+        .animated-element:nth-child(2) { transition-delay: 0.1s; }
+        .animated-element:nth-child(3) { transition-delay: 0.2s; }
+        .animated-element:nth-child(4) { transition-delay: 0.3s; }
+       
+
+        
+        .hero-title { animation-delay: 0.3s; }
+        .hero-description { animation-delay: 0.6s; }
+        .hero-button { animation-delay: 0.9s; }
+    </style>
+</head>
+<body class="text-gray-900">
+
+    
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+
+            
+            <div class="flex items-center space-x-2">
+                <a href="#" class="text-lg font-semibold text-gray-800 flex items-center rounded-lg">
+                    <img src="https://placehold.co/40x40/B30E14/ffffff?text=LL" alt="Legacy Legal Logo" class="inline-block rounded-full mr-2">
+                    Legacy Legal Services
+                </a>
+            </div>
+
+            
+            <nav class="hidden md:flex space-x-6 text-gray-700 font-medium">
+                <a href="#home" class="hover:text-red-700 transition-colors duration-200 py-2">HOME</a>
+                <a href="#team" class="hover:text-red-700 transition-colors duration-200 py-2">ABOUT OUR TEAM</a>
+                <a href="#practice-areas" class="hover:text-red-700 transition-colors duration-200 py-2">PRACTICE AREAS</a>
+                
+            </nav>
+
+            
+            <button
+                class="bg-red-700 text-white px-5 py-2 rounded-md hover:bg-red-800 transition-colors duration-200 hidden md:block shadow-md"
+                onclick="window.location.href='#contact-us'">
+                CONTACT US
+            </button>
+
+            
+            <button id="mobile-menu-button" class="md:hidden p-2 text-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-700 rounded-md">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+       
+        <div id="mobile-menu" class="hidden md:hidden bg-white py-4 shadow-md transition-all duration-300 ease-in-out">
+            <nav class="flex flex-col items-center space-y-3 text-gray-700 font-medium">
+                <a href="#home" class="hover:text-red-700 transition-colors duration-200 w-full text-center py-2 border-b border-gray-100">HOME</a>
+                <a href="#team" class="hover:text-red-700 transition-colors duration-200 w-full text-center py-2 border-b border-gray-100">ABOUT OUR TEAM</a>
+                <a href="#practice-areas" class="hover:text-red-700 transition-colors duration-200 w-full text-center py-2 border-b border-gray-100">PRACTICE AREAS</a>
+                
+                <button class="bg-red-700 text-white px-5 py-2 rounded-md hover:bg-red-800 transition-colors duration-200 w-auto mt-4 shadow-md"
+                    onclick="window.location.href='#contact-us'">CONTACT US</button>
+            </nav>
+        </div>
+    </header>
+
+   
+    <section id="home" class="hero-section text-white py-20 md:py-32 relative overflow-hidden">
+        <div class="hero-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10 text-center md:text-left">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 max-w-2xl mx-auto md:mx-0 animated-element hero-title will-change-transform opacity-0">
+                Experience You Can Rely On, Results You Deserve
+            </h1>
+            <p class="text-lg md:text-xl mb-8 max-w-3xl mx-auto md:mx-0 opacity-90 animated-element hero-description will-change-transform opacity-0">
+                We take pride in offering comprehensive legal support tailored to your unique needs. Our commitment is to deliver personalized solutions focused on achieving the outcomes that matter most to you.
+            </p>
+            <button class="bg-red-700 text-white px-8 py-3 rounded-md text-lg font-medium hover:bg-red-800 transition-colors duration-200 shadow-lg animated-element hero-button will-change-transform opacity-0"
+                onclick="window.location.href='#contact-us'">
+                GET HELP NOW
+            </button>
+        </div>
+    </section>
+
+    
+    <section class="py-16 md:py-24 bg-white" id="about">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+
+          
+            <div class="animated-element animated-slide-left opacity-0">
+                <div class="tradition-image-container shadow-xl">
+                    <img src="https://images.pexels.com/photos/4427630/pexels-photo-4427630.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Lawyer giving a speech" class="rounded-lg">
+                </div>
+            </div>
+
+           
+            <div class="animated-element animated-slide-right opacity-0">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">
+                    A Tradition of Excellence: 40 Years of Legal Expertise in Nepal
+                </h2>
+                <p class="text-gray-700 leading-relaxed mb-6">
+                    Since 1984, Legacy Legal Services has been a distinguished provider of legal expertise in Nepal, offering more than 40 years of trusted counsel and advocacy. Our firm's name, Legacy, signifies our enduring commitment to excellence and the aspiration to pass on a rich heritage of legal knowledge and client-focused service.
+                </p>
+                <p class="text-gray-700 leading-relaxed mb-8">
+                    We focus primarily on litigation, handling complex disputes across diverse sectors. Additionally, we provide representation in domestic and international arbitration, ensuring that our clients benefit from efficient dispute resolution, both locally and abroad.
+                </p>
+                <button class="border border-red-700 text-red-700 px-6 py-2 rounded-md font-medium hover:bg-red-50 transition-colors duration-200 shadow-sm">
+                    READ OUR STORY
+                </button>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="practice-areas" class="py-16 md:py-24 bg-gray-50 text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-800">
+                Our Areas of Practice
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center hover:shadow-lg transition-shadow duration-200 animated-element opacity-0">
+                    <img src="https://images.pexels.com/photos/50987/money-card-business-credit-card-50987.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Banking and Finance Icon" class="mb-4 rounded-md w-full h-40 object-cover">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Banking and Finance Disputes</h3>
+                    <p class="text-gray-600 text-center text-sm">Providing expert legal counsel and representation in complex banking and finance disputes.</p>
+                </div>
+
+              
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center hover:shadow-lg transition-shadow duration-200 animated-element opacity-0">
+                    <img src="https://images.pexels.com/photos/265087/pexels-photo-265087.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Commercial Mediation Icon" class="mb-4 rounded-md w-full h-40 object-cover">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Commercial Mediation</h3>
+                    <p class="text-gray-600 text-center text-sm">Facilitating effective resolution of commercial disagreements through mediation services.</p>
+                </div>
+
+               
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center hover:shadow-lg transition-shadow duration-200 animated-element opacity-0">
+                    <img src="https://images.pexels.com/photos/7876051/pexels-photo-7876051.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Commercial Litigation Icon" class="mb-4 rounded-md w-full h-40 object-cover">
+                    <h3 class="text-xl font-semibold mb-2 text-gray-800">Commercial Litigation</h3>
+                    <p class="text-gray-600 text-center text-sm">Aggressively representing clients in commercial disputes and court proceedings.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+    <section id="team" class="py-16 md:py-24 bg-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-12 text-gray-800">
+                Meet Our Experienced Team
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+                
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center border border-gray-200 hover:shadow-lg transition-shadow duration-200 animated-element opacity-0">
+                    <div class="team-member-image-container mb-4 w-40 h-40">
+                        <img src="https://legacylegal.com.np/wp-content/uploads/2024/10/550c2c5eff2aa787bac3510fcf9cbd2d-4.jpg" alt="Dr. Kumar Sharma Acharya" class="rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Dr. Kumar Sharma Acharya</h3>
+                    <p class="text-red-700 font-medium mb-3">Senior Partner</p>
+                    <div class="text-gray-600 text-sm mb-4 space-y-1">
+                        <p><i class="fas fa-phone-alt mr-2"></i> +977 9851109776</p>
+                        <p><i class="fas fa-envelope mr-2"></i> kumar@legacylegal.com.np</p>
+                    </div>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 transition-colors duration-200"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-blue-400 hover:text-blue-600 transition-colors duration-200"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-blue-700 hover:text-blue-900 transition-colors duration-200"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                    <button class="border border-red-700 text-red-700 px-6 py-2 rounded-md font-medium hover:bg-red-50 transition-colors duration-200 w-full shadow-sm">
+                        VIEW PROFILE
+                    </button>
+                </div>
+
+               
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center border border-gray-200 hover:shadow-lg transition-shadow duration-200 animated-element opacity-0">
+                    <div class="team-member-image-container mb-4 w-40 h-40">
+                        <img src="https://legacylegal.com.np/wp-content/uploads/2024/10/271155702_5058733060812849_4747968848809201876_n-4-300x300.jpg" alt="Radha Pant Acharya" class="rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Radha Pant Acharya</h3>
+                    <p class="text-red-700 font-medium mb-3">Senior Partner</p>
+                    <div class="text-gray-600 text-sm mb-4 space-y-1">
+                        <p><i class="fas fa-phone-alt mr-2"></i> +977 9841781234</p>
+                        <p><i class="fas fa-envelope mr-2"></i> radha@legacylegal.com.np</p>
+                    </div>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 transition-colors duration-200"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-blue-400 hover:text-blue-600 transition-colors duration-200"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-blue-700 hover:text-blue-900 transition-colors duration-200"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                    <button class="border border-red-700 text-red-700 px-6 py-2 rounded-md font-medium hover:bg-red-50 transition-colors duration-200 w-full shadow-sm">
+                        VIEW PROFILE
+                    </button>
+                </div>
+
+               
+                <div class="bg-white rounded-lg shadow-md p-6 flex flex-col items-center border border-gray-200 hover:shadow-lg transition-shadow duration-200 animated-element opacity-0">
+                    <div class="team-member-image-container mb-4 w-40 h-40">
+                        <img src="https://legacylegal.com.np/wp-content/uploads/2024/10/fc72krvI_400x400-4-300x300.jpg" alt="Prerana Basnet Acharya" class="rounded-lg">
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2">Prerana Basnet Acharya</h3>
+                    <p class="text-red-700 font-medium mb-3">Partner and Corporate Department Head</p>
+                    <div class="text-gray-600 text-sm mb-4 space-y-1">
+                        <p><i class="fas fa-phone-alt mr-2"></i> +977 9843265281</p>
+                        <p><i class="fas fa-envelope mr-2"></i> prerana@legacylegal.com.np</p>
+                    </div>
+                    <div class="flex space-x-4 mb-6">
+                        <a href="#" class="text-blue-600 hover:text-blue-800 transition-colors duration-200"><i class="fab fa-facebook-f text-xl"></i></a>
+                        <a href="#" class="text-blue-400 hover:text-blue-600 transition-colors duration-200"><i class="fab fa-twitter text-xl"></i></a>
+                        <a href="#" class="text-blue-700 hover:text-blue-900 transition-colors duration-200"><i class="fab fa-linkedin-in text-xl"></i></a>
+                    </div>
+                    <button class="border border-red-700 text-red-700 px-6 py-2 rounded-md font-medium hover:bg-red-50 transition-colors duration-200 w-full shadow-sm">
+                        VIEW PROFILE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  
+    <footer id="contact-us" class="bg-gray-900 text-gray-300 py-16">
+        <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8">
+            
+            <div class="md:col-span-1">
+                <a href="#" class="text-lg font-semibold text-white mb-4 block flex items-center">
+                    <img src="https://placehold.co/40x40/B30E14/ffffff?text=LL" alt="Legacy Legal Logo" class="inline-block rounded-full mr-2">
+                    Legacy Legal Services
+                </a>
+                <p class="text-sm mb-2"><i class="fas fa-map-marker-alt mr-2"></i> Kirtimarg-32, Kathmandu-977</p>
+                <p class="text-sm"><i class="fas fa-envelope mr-2"></i> legacylegal12345@gmail.com</p>
+            </div>
+
+            
+            <div class="md:col-span-1">
+                <h3 class="text-white font-semibold text-lg mb-4">Working Hours</h3>
+                <p class="text-sm">Sunday-Friday: 9:30 AM - 5:00 PM</p>
+                <p class="text-sm">Saturday: Closed</p>
+            </div>
+
+            
+            <div class="md:col-span-1">
+                <h3 class="text-white font-semibold text-lg mb-4">Connect With Us</h3>
+                <div class="flex space-x-4">
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200"><i class="fab fa-facebook-f text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200"><i class="fab fa-twitter text-xl"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200"><i class="fab fa-linkedin-in text-xl"></i></a>
+                </div>
+            </div>
+
+            
+            <div class="md:col-span-1">
+                <h3 class="text-white font-semibold text-lg mb-4">Navigate</h3>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#home" class="hover:text-red-400 transition-colors duration-200">Home</a></li>
+                    <li><a href="#about" class="hover:text-red-400 transition-colors duration-200">About Us</a></li>
+                    <li><a href="#team" class="hover:text-red-400 transition-colors duration-200">Our Team</a></li>
+                    <li><a href="#practice-areas" class="hover:text-red-400 transition-colors duration-200">Practice Areas</a></li>
+                    <li><a href="#blog" class="hover:text-red-400 transition-colors duration-200">Blogs</a></li>
+                    <li><a href="#contact-us" class="hover:text-red-400 transition-colors duration-200">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="text-center text-gray-500 text-sm mt-12 pt-8 border-t border-gray-700">
+            &copy; 2024 Legacy Legal Services. All rights reserved.
+        </div>
+    </footer>
+
+
+   
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+                if (!mobileMenu.classList.contains('hidden')) {
+                    mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                    mobileMenu.style.opacity = '1';
+                } else {
+                    mobileMenu.style.maxHeight = '0';
+                    mobileMenu.style.opacity = '0';
+                }
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.style.maxHeight = '0';
+                    mobileMenu.style.opacity = '0';
+                });
+            });
+
+            const heroTitle = document.querySelector('.hero-title');
+            const heroDescription = document.querySelector('.hero-description');
+            const heroButton = document.querySelector('.hero-button');
+
+            if (heroTitle && heroDescription && heroButton) {
+                heroTitle.classList.add('animate-fade-in-up');
+                heroDescription.classList.add('animate-fade-in-up');
+                heroButton.classList.add('animate-fade-in-up');
+            }
+
+
+            const animatedElements = document.querySelectorAll('.animated-element');
+
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        
+                        if (entry.target.classList.contains('animated-slide-left')) {
+                            entry.target.classList.add('animate-slide-in-left');
+                        } else if (entry.target.classList.contains('animated-slide-right')) {
+                            entry.target.classList.add('animate-slide-in-right');
+                        } else {
+                           
+                            entry.target.classList.add('animate-fade-in-up');
+                        }
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>
